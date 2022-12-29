@@ -8,13 +8,10 @@ FILE(WRITE ${CMAKE_CURRENT_BINARY_DIR}/pseudo.cxx
 
 add_library(${PROJECT_NAME} STATIC pseudo.cxx pseudo.hxx)
 
-message(STATUS "second: ${TARGET_CPU}")
 if(NOT DEFINED TARGET_CPU)
 	if(CMAKE_SIZEOF_VOID_P EQUAL 4)
-		message("IN 32b")
 		set(TARGET_CPU "x86")
 	elseif(CMAKE_SIZEOF_VOID_P EQUAL 8)
-		message("IN 64b")
 		set(TARGET_CPU "x64")
 	endif()
 endif()
