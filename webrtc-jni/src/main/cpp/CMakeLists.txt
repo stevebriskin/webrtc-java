@@ -1,6 +1,9 @@
 cmake_minimum_required(VERSION 3.13)
 project(webrtc-java)
 
+message(STATUS "processor: ${CMAKE_SYSTEM_PROCESSOR}")
+message(STATUS "first: ${TARGET_CPU}")
+
 if(UNIX AND NOT APPLE)
 	set(LINUX TRUE)
 endif()

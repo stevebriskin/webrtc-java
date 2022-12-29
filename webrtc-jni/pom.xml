@@ -16,6 +16,7 @@
 		<webrtc.src.dir>${user.home}/webrtc</webrtc.src.dir>
 		<webrtc.install.dir>${user.home}/webrtc/build</webrtc.install.dir>
 		<cmake.build.type>Release</cmake.build.type>
+		<cmake.arch></cmake.arch>
 	</properties>
 
 	<build>
@@ -94,6 +95,9 @@
 									"${cmake.options}"
 								</option>
 								<option>
+									-DTARGET_CPU=${cmake.arch}
+								</option>
+								<option>
 									-DWEBRTC_BRANCH=${webrtc.branch}
 								</option>
 								<option>
@@ -138,7 +142,21 @@
 				</os>
 			</activation>
 			<properties>
+				<!-- NOT SURE IF THIS ACTUALLY WORKS -->
 				<cmake.options>-Ax64</cmake.options>
+				<cmake.config>${cmake.build.type}</cmake.config>
+			</properties>
+		</profile>
+		<profile>
+			<id>mac-aarch64</id>
+			<activation>
+				<os>
+					<family>mac</family>
+					<arch>aarch64</arch>
+				</os>
+			</activation>
+			<properties>
+				<cmake.arch>arm64</cmake.arch>
 				<cmake.config>${cmake.build.type}</cmake.config>
 			</properties>
 		</profile>
